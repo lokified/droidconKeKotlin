@@ -41,9 +41,12 @@ fun Navigation(
             updateBottomBarState(true)
             HomeRoute(
                 navigateToSpeakers = { navController.navigate(Screens.Speakers.route) },
-                navigateToSpeaker = { twitterHandle ->
+                navigateToSpeaker = { speakerId ->
                     navController.navigate(
-                        Screens.SpeakerDetails.route.replace("{twitterHandle}", twitterHandle)
+                        Screens.SpeakerDetails.route.replace(
+                            "{speakerId}",
+                            speakerId
+                        )
                     )
                 },
                 navigateToFeedbackScreen = { navController.navigate(Screens.FeedBack.route) },
@@ -55,6 +58,7 @@ fun Navigation(
         composable(Screens.Sessions.route) {
             updateBottomBarState(true)
             SessionsRoute(navigateToSessionDetails = { sessionId ->
+
                 navController.navigate(
                     Screens.SessionDetails.route.replace(
                         oldValue = "{sessionId}",
